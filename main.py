@@ -19,7 +19,7 @@ st.set_page_config(
 # Judul pada Bagian Homepage
 st.header = st.markdown("<h1 style='text-align: center;'>Sistem Isyarat Bahasa Indonesia<h1>", unsafe_allow_html=True)
 
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
 classifier = Classifier("Model/keras_model.h5", "Model/labels.txt")
 
