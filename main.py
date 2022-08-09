@@ -1,10 +1,10 @@
 import streamlit as st
 import time
 from PIL import Image
-import cv2
 from cvzone.HandTrackingModule import HandDetector
 from cvzone.ClassificationModule import Classifier
 import numpy as np
+import cv2
 import math
 from streamlit_option_menu import option_menu
 
@@ -38,8 +38,7 @@ labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
 # Menu
 menu = ["Home",
         "Deteksi SIBI",
-        "About"] #menu
-# choice = st.sidebar.selectbox("MENU", menu) #sidebar menu
+        "About"]
 
 # Side bar
 with st.sidebar:
@@ -51,14 +50,13 @@ with st.sidebar:
     )
 
 col1, col2, col3 = st.columns(3) #columns
+
 # DETEKSI
 if selected == f'{menu[1]}': 
     with col1: #column 1
         st.subheader(f"{menu[1]}")
     st.markdown("Sistem Bahasa Isyarat Indonesia (SIBI)")
     run = st.checkbox("Buka Kamera") #checkbox
-    # st.image(Image.open("SIBI2.png"))
-    # st.markdown("<h2 style='text-align: center; color:black;'>ATTEDANCE</h2>", unsafe_allow_html=True) #title
     if run :
         while True:
             ret, img = cap.read()
@@ -105,15 +103,9 @@ if selected == f'{menu[1]}':
                 cv2.rectangle(img, (x-25,y-offset-70), (x+w+offset, y-offset), (255,255,255), cv2.FILLED)
                 cv2.putText(img, labels[index], (x,y-26), cv2.FONT_HERSHEY_COMPLEX, 1.3, (0,0,0), 2)
                 cv2.rectangle(img, (x-offset,y-offset), (x+w+offset,y+h+offset), (255,255,255), 4)
-
-                # cv2.imshow("ImageCrop", imgCrop)
-                # cv2.imshow("imgWhite", imgWhite)
             
             FRAME_WINDOW.image(img)
-            # cv2.imshow("skripsi", img)
             key = cv2.waitKey(1)
-            # if key & st.checkbox("Tutup Kamera") :
-            #     break
     else:
         pass
 # HOME
@@ -125,13 +117,9 @@ elif selected == f'{menu[0]}':
         # Membuka Gambar Dengan Nama upload.jpg
     with col2:
         # Menampilkan Gambar kedalam Homepage
-        # image = st.image(imgHome)
-        # imgHome = Image.open("Foto Sidang.jpeg")
-        # st.image(imgHome)
         with col1:
             st.write("")
         with col2:
-            # st.text(""" Rofi Saefurrohman 15180376 """)
             st.image(Image.open("SIBI2.png"))
         with col3:
             st.write("")
@@ -139,7 +127,6 @@ elif selected == f'{menu[0]}':
             st.write(' ')
 # ABOUT
 elif selected == f'{menu[2]}':
-    # st.markdown(f"<h1 style='text-align: center;'>{menu[2]}</h1>", unsafe_allow_html=True) #title
     with col1:
         st.write('')
     with col2:
@@ -154,10 +141,8 @@ Ini adalah project Skripsi saya
 Terima kasih atas ilmunya pak/bu :) """)
 
 with st.sidebar:
-    # with st.echo():
     with st.spinner("Bapak Ibu luluskan sayaa..."):
         time.sleep(5)
-    # st.success("Done!")
 
 st.sidebar.text('Rofi Saefurrohman 15180376')
 
